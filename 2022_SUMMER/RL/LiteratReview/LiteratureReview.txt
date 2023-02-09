@@ -1,0 +1,108 @@
+#####################################################################################################################################
+##################################################Paper 1############################################################################
+#####################################################################################################################################
+Year		: 	2019
+Author		: 	Steven Carr, Nils Jansen, Ralf Wimmer, Alexandru C. Serban, Bernd Becker and Ufuk Topcu
+Title		: 	Counterexample-Guided Strategy Improvement for POMDPs Using Recurrent Neural Networks
+Main Point	: 	Using RNN model to solve POMDP's strategy
+States Dim	:	Navigation Problem (333 to 4045840)
+			Delivery Problem (80 to 500)
+			Slippery Problem (460 to 11980)
+
+Disadvantage	:	Although in paper, it said 'combine methods from both fields in order to guarantee that a
+		 	candidate strategy learned through machine learning provably satisfies temporal logic 
+			specifications', I think no exact theorm or proof support.
+
+History		:	Solve POMDP method	- Point-based [Pineau et al.2003]
+							( no guarantees for given temporal logic specifications.)		
+						- Monte-Carlo based [Silver and Veness,2010]
+							( no guarantees for given temporal logic specifications.)
+						- PRISM-POMDP [Norman et al., 2017]
+							( only restircted to small examples)
+						- Machine learning method (LSTM[Wierstra et al.2007]
+                                                                           Deep Q-learning [Mnih et al.2015])
+							( no model-based vertification)
+#####################################################################################################################################
+##################################################Paper 2############################################################################
+##################################################################################################################################### 
+Year		: 	2018
+Author		: 	Sebastian Junges, Nils Jansen, Ralf Wimmer, Tim Quatmann, Leonore Winterer, Joost-Pieter Katoen, Bernd Becker
+Title		: 	Finite-state Controllers of POMDPs via Parameter Synthesis
+Main Point	: 	Computing (randomised) FSCs on POMDPs to handle larger state space problem
+States Dim	:	NRP 125
+			Grid 17
+			Netw 2729
+			Crpt 4885
+			Maze 16
+			Load 16
+			Slippery 17
+
+Disadvantage	:	In this papaer, solve pomdp by transfer the problem into parameter synthesis MC, I think the way to give a 
+			distribution function too difficult and based too much on randomize 
+
+History		:	Pomdp comes form mdp
+#####################################################################################################################################
+##################################################Paper 3############################################################################
+##################################################################################################################################### 
+Year		: 	2012
+Author		: 	Hanna Kurniawati · Tirthankar Bandyopadhyay · Nicholas M. Patrikalakis 
+Title		: 	Global motion planning under uncertain motion, sensing, and environment map
+Main Point	: 	Propose a motion planner GCS( Guided Cluster Sampling) based on point-base POMDP alg
+States Dim	:	tens of states( continuous states, i.e figures)
+
+Disadvantage	:	Handle the tens of discrete states by continuous states and shink the figures by range.
+
+History		:	Mehthod of discrete the continous states will not show convergency.[Kurniawati 2012] 
+#####################################################################################################################################
+##################################################Paper 4############################################################################
+##################################################################################################################################### 
+Year		: 	2009
+Author		: 	Hanna Kurniawati, David Hsu, Wee Sun Lee
+Title		: 	SARSOP: Efficient Point-Based POMDP Planning by Approximating Optimally Reachable Belief Spaces
+Main Point	: 	Computing (randomised) FSCs on POMDPs to handle larger state space problem. Given new point-based POMDP Alg
+			 - SARSOP(Successive Approximations of the Reachable Space under Optimal Policies)
+States Dim	:	Underwater Navigation 2653
+			Grasping 1253
+			Integrated Exploration 15517
+			Rock Sample 12545
+			Tag 870
+			Homecare 5408
+
+Disadvantage	:	SARSOP is still a Point-Based POMDP. This paper focus on discrete states, but in recent 10 years, robot 
+			problem focus more on countinuous states and action spaces.
+
+History		:	Point-Based Algorithm:	- PBVI [J. Pineau] et al. 2003]
+							(first point-based algorithm, on Tag problem with 870 states)
+						- HSVI2 [Point-based POMDP algorithms: Improved analysis and implementation, 2005]
+							(best performance in general)
+						- FSVI [Forward search value iteration for POMDPs, 2007]
+							(performance goes down when uncertatinty is high)
+						- SARSOP [2009, Kurniawati], better performance than HSVI2
+			Robot problem's states dim:  - dozen states [C. Papadimitriou and J. Tsisiklis, 1987]
+							(computationally intractable)
+						     - hundreds of states in seconds 
+							[A point-based pomdp planner for target tracking,2008;
+							Forward search value iteration for POMDPs,2007
+							Point-based POMDP algorithms: Improved analysis and implementation,2005]
+#####################################################################################################################################
+##################################################Paper 5############################################################################
+##################################################################################################################################### 
+Year		: 	2003
+Author		: 	Joelle Pineau, Geoff Gordon and Sebastian Thrun
+Title		: 	Point-based value iteration: An anytime algorithm for POMDPs
+Main Point	: 	first point-based algorithm, avoid the curse of history in Pompds problem
+States Dim	:	Tag problem 870
+
+Disadvantage	:	SARSOP is better method than PEVI. With the introduce of hyper computational computer, the complexity problem
+			in Pomdp is no longer exits, not only, more history information can be store combained with rnn model[Carr,et
+			 al. 2019], but even more complexity states - continous states are used in robot problem[Burks, 2020].
+
+History		:	- POMDPs first introduced by [Sondik,1971]
+			- Refined by [Cassandra et al. 1997;
+				      Kaelbling et al. 1998;
+				      Zhang and Zhang 2001]
+			- Since then, curse of dimensionlity problem prevents the devlopment in pomdps [Kaelbling et al.1998]
+			- Pruning strategies occurs [Littman et al 1995
+						     Cassandra et al 1997]
+			- Better strategies, value iteration occurs [Kaelbling et al, 1998
+								     Zhou and Hansen, 2001]
